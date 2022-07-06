@@ -1,26 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import HogTile from "./HogTile";
 
-function HogsContainer({ hogData }) {
-    //const [selectedHog, setSelectedHog] = useState("")
 
-    const hogTiles = hogData.map((hog) => {
-        return (
-            <div className="pigTile" id={hog.name}>
-                <HogTile
-                    key={hog.name} 
-                    hogInfo={hog}
-                    nameId={hog.name}
-                />
-            </div>
-        )
-    });
-
+function HogsContainer({ hogs }) {
     return (
         <div className="ui grid">
-            {hogTiles}
+            {hogs.map((hog) => {
+                return <HogTile key={hog.name} 
+                                hog={hog} 
+                        />
+            })}
         </div>
     )
-};
+}
+
 
 export default HogsContainer;

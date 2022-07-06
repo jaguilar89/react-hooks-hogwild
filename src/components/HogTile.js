@@ -1,35 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
+import HogDetails from "./HogDetails";
 
-function HogTile({ hogInfo, className, nameId }) {
+function HogTile({ hog }) {
+    const [showDetails, setShowDetails] = useState(false)
+
+    function handleShowDetails() {
+        setShowDetails((showDetails) => !showDetails);
+    }
+
     return (
-        <>
-            <div class="ui link cards" id={nameId}>
-                <div class="card">
-                    <div class="image">
-                        <img src={hogInfo.image} />
+        <div class="ui link cards">
+            <div class="card">
+                <div class="image">
+                    <img src={hog.image} />
+                </div>
+                <div class="content">
+                    <div class="header">{hog.name}</div>
+                    <div class="description">
+                        <p>Greased: {hog.greased ? "Yes" : "No"}</p>
                     </div>
-                    <div class="content">
-                        <div class="header">{hogInfo.name}</div>
-                        <div class="meta">
-                            <p class={className}>Greased: {hogInfo.greased ? "Yes" : "No"}</p>
-                        </div>
-                        <div class="description">
-                            <p class={className}>Specialty: {hogInfo.specialty}</p>
-                        </div>
-                    </div>
-                    <div class="extra content">
-                        <span class="right floated" className={className}>
-                            Weight: {hogInfo.weight}
-                        </span>
-                        <span class={className}>
-                            <i class="certificate icon"></i>
-                            Highest medal: {hogInfo["highest medal achieved"]}
-                        </span>
+                    <div class="description">
+                        Specialty: {hog.specialty}
                     </div>
                 </div>
+                <div class="extra content">
+                    {showDetails ? <HogDetails hog={hog}/> : null}
+                </div>
+                <button className="ui button" onClick={handleShowDetails}>
+                    {showDetails ? "Show Less" : "Show More"}
+                </button>
             </div>
-        </>
-        )
-};
+        </div>
+            )
+}
 
 export default HogTile;
+
+/*
+<div class="ui link cards">
+  <div class="card">
+    <div class="image">
+      <img src="/images/avatar2/large/matthew.png">
+    </div>
+    <div class="content">
+      <div class="header">Matt Giampietro</div>
+      <div class="meta">
+        <a>Friends</a>
+      </div>
+      <div class="description">
+        Matthew is an interior designer living in New York.
+      </div>
+    </div>
+    <div class="extra content">
+      <span class="right floated">
+        Joined in 2013
+      </span>
+      <span>
+        <i class="user icon"></i>
+        75 Friends
+      </span>
+    </div>
+  </div>
+*/
