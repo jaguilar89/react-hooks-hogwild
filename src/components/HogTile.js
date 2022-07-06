@@ -1,9 +1,9 @@
 import React from "react";
 
-function HogTile({ hogInfo }) {
+function HogTile({ hogInfo, className, nameId }) {
     return (
         <>
-            <div class="ui link cards">
+            <div class="ui link cards" id={nameId}>
                 <div class="card">
                     <div class="image">
                         <img src={hogInfo.image} />
@@ -11,17 +11,17 @@ function HogTile({ hogInfo }) {
                     <div class="content">
                         <div class="header">{hogInfo.name}</div>
                         <div class="meta">
-                            <p>Greased: {hogInfo.greased ? "Yes" : "No"}</p>
+                            <p class={className}>Greased: {hogInfo.greased ? "Yes" : "No"}</p>
                         </div>
                         <div class="description">
-                            Specialty: {hogInfo.specialty}
+                            <p class={className}>Specialty: {hogInfo.specialty}</p>
                         </div>
                     </div>
                     <div class="extra content">
-                        <span class="right floated">
+                        <span class="right floated" className={className}>
                             Weight: {hogInfo.weight}
                         </span>
-                        <span>
+                        <span class={className}>
                             <i class="certificate icon"></i>
                             Highest medal: {hogInfo["highest medal achieved"]}
                         </span>
@@ -32,4 +32,4 @@ function HogTile({ hogInfo }) {
         )
 };
 
-            export default HogTile;
+export default HogTile;

@@ -6,7 +6,7 @@ import hogs from "../porkers_data";
 
 function App() {
 	const [hogData, setHogData] = useState(hogs);
-
+	
 	return (
 		<div className="App">
 			<Nav />
@@ -16,3 +16,6 @@ function App() {
 }
 
 export default App;
+
+
+//TODO: Allow the user to filter the hogs that are greased
